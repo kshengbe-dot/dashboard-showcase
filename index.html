@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard Showcase | Shengbe Koker</title>
-  <meta name="description" content="Dashboard showcase by Shengbe Koker featuring analytics reporting, KPI tracking, and visual storytelling." />
+  <meta
+    name="description"
+    content="Dashboard showcase by Shengbe Koker featuring analytics reporting, KPI views, and visual storytelling."
+  />
 
   <style>
     :root{
@@ -14,14 +17,19 @@
       --muted:#a8b4d8;
       --accent:#7c5cff;
       --accent2:#19d3ae;
+      --accent3:#4c7df7;
+      --warn:#ffb454;
+      --danger:#ff6b7a;
       --stroke:rgba(255,255,255,.10);
+      --stroke-strong:rgba(255,255,255,.16);
       --shadow:0 20px 60px rgba(0,0,0,.35);
       --shadow-lg:0 28px 90px rgba(0,0,0,.45);
       --radius:24px;
-      --max:1120px;
+      --max:1180px;
     }
 
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
 
     body{
       margin:0;
@@ -34,8 +42,10 @@
       line-height:1.7;
     }
 
-    a{text-decoration:none;color:inherit}
-    img{max-width:100%;display:block}
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
 
     .container{
       width:min(92%, var(--max));
@@ -53,8 +63,8 @@
 
     .nav-inner{
       display:flex;
-      justify-content:space-between;
       align-items:center;
+      justify-content:space-between;
       gap:16px;
       padding:16px 0;
       flex-wrap:wrap;
@@ -65,26 +75,28 @@
       font-size:1rem;
     }
 
-    .back{
+    .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
       min-height:44px;
       padding:0 16px;
-      border:1px solid var(--stroke);
       border-radius:12px;
+      border:1px solid var(--stroke);
       background:rgba(255,255,255,.05);
+      color:var(--text);
       font-weight:700;
       transition:.2s ease;
     }
 
-    .back:hover{
-      background:rgba(255,255,255,.09);
+    .btn:hover{
       transform:translateY(-2px);
+      background:rgba(255,255,255,.10);
+      border-color:var(--stroke-strong);
     }
 
     .hero{
-      padding:58px 0 22px;
+      padding:68px 0 24px;
     }
 
     .eyebrow{
@@ -102,7 +114,7 @@
 
     h1{
       margin:0 0 12px;
-      font-size:clamp(2rem, 5vw, 3.3rem);
+      font-size:clamp(2.2rem, 5vw, 3.8rem);
       line-height:1.05;
       letter-spacing:-.04em;
     }
@@ -111,188 +123,59 @@
       margin:0;
       color:var(--muted);
       max-width:780px;
-      font-size:1.03rem;
+      font-size:1.04rem;
     }
 
-    .metrics{
+    .top-metrics{
       display:grid;
       grid-template-columns:repeat(4,1fr);
-      gap:14px;
-      margin:28px 0 0;
+      gap:16px;
+      margin:28px 0 30px;
     }
 
-    .metric{
-      padding:18px;
-      border-radius:18px;
+    .metric-card{
       border:1px solid var(--stroke);
-      background:rgba(255,255,255,.04);
+      border-radius:20px;
+      padding:20px;
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
       box-shadow:var(--shadow);
     }
 
-    .metric strong{
+    .metric-card strong{
       display:block;
-      font-size:1.22rem;
-      margin-bottom:4px;
+      font-size:1.1rem;
+      margin-bottom:6px;
     }
 
-    .metric span{
+    .metric-card span{
       color:var(--muted);
-      font-size:.92rem;
-    }
-
-    .section{
-      padding:18px 0 56px;
-    }
-
-    .section-head{
-      margin-bottom:18px;
-    }
-
-    .section-head h2{
-      margin:0 0 8px;
-      font-size:1.2rem;
-    }
-
-    .section-head p{
-      margin:0;
-      color:var(--muted);
-      max-width:760px;
+      font-size:.94rem;
     }
 
     .dash-grid{
       display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:20px;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+      padding-bottom:26px;
     }
 
     .dash-card{
-      padding:22px;
-      border-radius:24px;
       border:1px solid var(--stroke);
-      background:rgba(255,255,255,.04);
+      border-radius:28px;
+      padding:22px;
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
       box-shadow:var(--shadow);
+      overflow:hidden;
     }
 
-    .dash-card h3{
-      margin:0 0 10px;
-      font-size:1.15rem;
+    .dash-card h2{
+      margin:0 0 8px;
+      font-size:1.18rem;
     }
 
     .dash-card p{
       margin:0 0 16px;
       color:var(--muted);
-    }
-
-    .dash-preview{
-      border-radius:18px;
-      border:1px solid var(--stroke);
-      overflow:hidden;
-      background:#0c1326;
-      margin-bottom:16px;
-      min-height:220px;
-      position:relative;
-    }
-
-    .dash-preview img{
-      width:100%;
-      height:220px;
-      object-fit:cover;
-    }
-
-    .mock-dash{
-      padding:18px;
-      display:grid;
-      gap:12px;
-      min-height:220px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
-    }
-
-    .mock-top{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:10px;
-    }
-
-    .mock-kpi{
-      border-radius:14px;
-      border:1px solid var(--stroke);
-      background:rgba(255,255,255,.04);
-      padding:12px;
-    }
-
-    .mock-kpi strong{
-      display:block;
-      font-size:1rem;
-      margin-bottom:4px;
-    }
-
-    .mock-kpi span{
-      color:var(--muted);
-      font-size:.85rem;
-    }
-
-    .mock-middle{
-      display:grid;
-      grid-template-columns:1.25fr .75fr;
-      gap:10px;
-      min-height:92px;
-    }
-
-    .mock-chart,
-    .mock-side,
-    .mock-bottom{
-      border-radius:14px;
-      border:1px solid var(--stroke);
-      background:rgba(255,255,255,.04);
-      position:relative;
-      overflow:hidden;
-    }
-
-    .mock-chart::before{
-      content:"";
-      position:absolute;
-      inset:auto 10px 14px 10px;
-      height:46px;
-      border-radius:10px;
-      background:linear-gradient(90deg, rgba(124,92,255,.55), rgba(25,211,174,.45));
-      clip-path:polygon(0% 80%, 12% 66%, 24% 72%, 36% 36%, 48% 52%, 60% 24%, 72% 42%, 84% 14%, 100% 30%, 100% 100%, 0% 100%);
-      opacity:.9;
-    }
-
-    .mock-side::before{
-      content:"";
-      position:absolute;
-      inset:12px;
-      border-radius:10px;
-      background:
-        linear-gradient(180deg,
-          rgba(255,255,255,.10) 0 16%,
-          transparent 16% 24%,
-          rgba(255,255,255,.08) 24% 38%,
-          transparent 38% 46%,
-          rgba(255,255,255,.06) 46% 60%,
-          transparent 60% 68%,
-          rgba(255,255,255,.05) 68% 82%,
-          transparent 82% 100%);
-    }
-
-    .mock-bottom{
-      min-height:74px;
-    }
-
-    .mock-bottom::before{
-      content:"";
-      position:absolute;
-      inset:12px;
-      border-radius:10px;
-      background:
-        linear-gradient(90deg,
-          rgba(124,92,255,.45) 0 18%,
-          transparent 18% 22%,
-          rgba(25,211,174,.40) 22% 52%,
-          transparent 52% 56%,
-          rgba(255,255,255,.18) 56% 100%);
     }
 
     .chips{
@@ -313,48 +196,260 @@
     }
 
     .proof{
-      padding:14px 16px;
+      margin-top:16px;
+      padding:16px;
       border-radius:16px;
       border:1px solid rgba(124,92,255,.25);
       background:rgba(124,92,255,.10);
       color:#ece7ff;
       font-size:.95rem;
-      margin-bottom:16px;
     }
 
-    .actions{
-      display:flex;
-      flex-wrap:wrap;
+    .dashboard{
+      border-radius:22px;
+      border:1px solid var(--stroke);
+      background:#0b1226;
+      padding:14px;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.03);
+    }
+
+    .kpi-row{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:10px;
+      margin-bottom:10px;
+    }
+
+    .kpi{
+      padding:14px;
+      border-radius:16px;
+      border:1px solid var(--stroke);
+      background:rgba(255,255,255,.04);
+    }
+
+    .kpi strong{
+      display:block;
+      font-size:1rem;
+      margin-bottom:4px;
+    }
+
+    .kpi span{
+      color:var(--muted);
+      font-size:.82rem;
+    }
+
+    .layout-2{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
       gap:10px;
     }
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:42px;
-      padding:0 14px;
-      border-radius:12px;
-      font-size:.92rem;
-      font-weight:800;
+    .panel{
       border:1px solid var(--stroke);
-      background:rgba(255,255,255,.05);
-      color:var(--text);
-      transition:.18s ease;
+      border-radius:18px;
+      background:rgba(255,255,255,.04);
+      padding:14px;
+      min-height:120px;
+      position:relative;
+      overflow:hidden;
     }
 
-    .btn:hover{
-      background:rgba(255,255,255,.09);
-      transform:translateY(-2px);
+    .panel h4{
+      margin:0 0 10px;
+      font-size:.9rem;
+      color:#edf2ff;
     }
 
-    .btn.primary{
-      background:rgba(124,92,255,.18);
-      border-color:rgba(124,92,255,.35);
+    .muted-sm{
+      color:var(--muted);
+      font-size:.8rem;
+    }
+
+    .bar-chart{
+      display:flex;
+      align-items:flex-end;
+      gap:10px;
+      height:150px;
+      padding-top:16px;
+    }
+
+    .bar{
+      flex:1;
+      border-radius:12px 12px 6px 6px;
+      background:linear-gradient(180deg, rgba(124,92,255,.95), rgba(76,125,247,.85));
+      min-width:20px;
+      position:relative;
+      box-shadow:0 8px 18px rgba(124,92,255,.20);
+    }
+
+    .bar.alt{
+      background:linear-gradient(180deg, rgba(25,211,174,.95), rgba(25,211,174,.55));
+      box-shadow:0 8px 18px rgba(25,211,174,.18);
+    }
+
+    .bar.warn{
+      background:linear-gradient(180deg, rgba(255,180,84,.95), rgba(255,180,84,.55));
+      box-shadow:0 8px 18px rgba(255,180,84,.18);
+    }
+
+    .bar.danger{
+      background:linear-gradient(180deg, rgba(255,107,122,.95), rgba(255,107,122,.55));
+      box-shadow:0 8px 18px rgba(255,107,122,.18);
+    }
+
+    .bar-labels{
+      display:flex;
+      gap:10px;
+      margin-top:8px;
+      font-size:.76rem;
+      color:var(--muted);
+    }
+
+    .bar-labels span{
+      flex:1;
+      text-align:center;
+    }
+
+    .line-chart{
+      height:165px;
+      position:relative;
+      border-radius:14px;
+      background:
+        linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px) 0 0 / 100% 25%,
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px) 0 0 / 20% 100%;
+    }
+
+    .line-chart svg{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+    }
+
+    .donut-wrap{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      justify-content:center;
+      min-height:170px;
+    }
+
+    .donut{
+      width:130px;
+      height:130px;
+      border-radius:50%;
+      background:conic-gradient(
+        var(--accent) 0 42%,
+        var(--accent2) 42% 73%,
+        var(--warn) 73% 89%,
+        rgba(255,255,255,.08) 89% 100%
+      );
+      position:relative;
+      box-shadow:0 0 0 1px var(--stroke) inset;
+    }
+
+    .donut::after{
+      content:"";
+      position:absolute;
+      inset:24px;
+      border-radius:50%;
+      background:#0b1226;
+      border:1px solid var(--stroke);
+    }
+
+    .legend{
+      display:grid;
+      gap:8px;
+      font-size:.82rem;
+      color:var(--muted);
+    }
+
+    .legend div{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+    }
+
+    .dot.a{background:var(--accent)}
+    .dot.b{background:var(--accent2)}
+    .dot.c{background:var(--warn)}
+    .dot.d{background:rgba(255,255,255,.3)}
+
+    .table{
+      display:grid;
+      gap:8px;
+      margin-top:8px;
+    }
+
+    .row-head,
+    .row-item{
+      display:grid;
+      grid-template-columns:1.2fr .8fr .8fr;
+      gap:10px;
+      align-items:center;
+      font-size:.82rem;
+    }
+
+    .row-head{
+      color:#f0f4ff;
+      font-weight:700;
+      padding-bottom:6px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .row-item{
+      color:var(--muted);
+      padding:8px 0;
+      border-bottom:1px solid rgba(255,255,255,.05);
+    }
+
+    .progress{
+      height:8px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      overflow:hidden;
+    }
+
+    .progress > span{
+      display:block;
+      height:100%;
+      border-radius:999px;
+      background:linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+
+    .split-panels{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      margin-top:10px;
+    }
+
+    .tiny-card{
+      border:1px solid var(--stroke);
+      border-radius:16px;
+      background:rgba(255,255,255,.04);
+      padding:12px;
+    }
+
+    .tiny-card strong{
+      display:block;
+      margin-bottom:4px;
+      font-size:.92rem;
+    }
+
+    .tiny-card span{
+      color:var(--muted);
+      font-size:.8rem;
     }
 
     .closing{
-      margin-top:24px;
+      margin-bottom:64px;
       padding:24px;
       border-radius:24px;
       border:1px solid var(--stroke);
@@ -366,7 +461,7 @@
 
     .closing h2{
       margin:0 0 10px;
-      font-size:1.2rem;
+      font-size:1.14rem;
     }
 
     .closing p{
@@ -375,269 +470,318 @@
       max-width:760px;
     }
 
-    @media (max-width:920px){
-      .metrics,
+    @media (max-width:980px){
+      .top-metrics,
       .dash-grid,
-      .mock-top,
-      .mock-middle{
+      .kpi-row,
+      .layout-2,
+      .split-panels{
         grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:640px){
+      .row-head,
+      .row-item{
+        grid-template-columns:1fr 1fr 1fr;
+        font-size:.76rem;
+      }
+
+      .donut-wrap{
+        flex-direction:column;
       }
     }
   </style>
 </head>
 <body>
-
   <nav class="nav">
     <div class="container nav-inner">
       <div class="brand">Shengbe Koker</div>
-      <a href="index.html" class="back">← Back to Portfolio</a>
+      <a href="https://kshengbe-dot.github.io/portfolio/" class="btn">← Back</a>
     </div>
   </nav>
 
   <main class="container">
     <section class="hero">
-      <div class="eyebrow">Visualization & Reporting</div>
+      <span class="eyebrow">Visualization & Reporting</span>
       <h1>Dashboard Showcase</h1>
       <p class="sub">
-        A collection of dashboard concepts and analytics views designed to communicate performance,
-        trends, KPIs, and operational insights clearly. This page highlights how I think about
-        reporting, visual structure, and decision support.
+        This page shows how I think about reporting, KPIs, and visual communication. Each dashboard
+        is designed differently to match the type of decision it supports.
       </p>
+    </section>
 
-      <div class="metrics">
-        <div class="metric">
-          <strong>KPI Focused</strong>
-          <span>Built around decision-ready metrics</span>
-        </div>
-        <div class="metric">
-          <strong>Clear Reporting</strong>
-          <span>Visual structure that supports quick understanding</span>
-        </div>
-        <div class="metric">
-          <strong>Business-Oriented</strong>
-          <span>Designed to connect trends to action</span>
-        </div>
-        <div class="metric">
-          <strong>Analytics Ready</strong>
-          <span>Useful for Tableau, Power BI, and reporting workflows</span>
-        </div>
+    <section class="top-metrics">
+      <div class="metric-card">
+        <strong>Distinct Views</strong>
+        <span>Each dashboard uses a layout that matches the problem it represents.</span>
+      </div>
+      <div class="metric-card">
+        <strong>Visible Visuals</strong>
+        <span>Charts, trend lines, progress views, and tables are built into the page.</span>
+      </div>
+      <div class="metric-card">
+        <strong>Decision-Oriented</strong>
+        <span>The focus is not decoration — it is helping users understand what matters.</span>
+      </div>
+      <div class="metric-card">
+        <strong>Portfolio Proof</strong>
+        <span>This demonstrates dashboard thinking, structure, and communication clarity.</span>
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-head">
-        <h2>Dashboard Concepts</h2>
+    <section class="dash-grid">
+      <article class="dash-card">
+        <h2>Flight Performance Dashboard</h2>
         <p>
-          These examples are meant to show reporting logic, dashboard structure, and how I present data in a way that is readable, useful, and visually organized.
+          This view focuses on airline delays, cancellation spikes, route performance, and operational stress periods.
         </p>
-      </div>
 
-      <div class="dash-grid">
-        <article class="dash-card">
-          <h3>Flight Performance Dashboard</h3>
-          <p>
-            A dashboard concept focused on delay patterns, cancellations, route performance, and peak operational stress periods.
-          </p>
+        <div class="chips">
+          <span class="chip">Operations</span>
+          <span class="chip">Delays</span>
+          <span class="chip">Airline Performance</span>
+        </div>
 
-          <div class="dash-preview">
-            <div class="mock-dash">
-              <div class="mock-top">
-                <div class="mock-kpi">
-                  <strong>50K+</strong>
-                  <span>Records</span>
+        <div class="dashboard">
+          <div class="kpi-row">
+            <div class="kpi"><strong>50K+</strong><span>Records analyzed</span></div>
+            <div class="kpi"><strong>12%</strong><span>Cancellation rate</span></div>
+            <div class="kpi"><strong>38 min</strong><span>Average delay</span></div>
+            <div class="kpi"><strong>5 routes</strong><span>High-risk routes</span></div>
+          </div>
+
+          <div class="layout-2">
+            <div class="panel">
+              <h4>Delay Frequency by Time Window</h4>
+              <div class="bar-chart">
+                <div class="bar" style="height:40%"></div>
+                <div class="bar alt" style="height:58%"></div>
+                <div class="bar warn" style="height:86%"></div>
+                <div class="bar danger" style="height:72%"></div>
+                <div class="bar alt" style="height:52%"></div>
+              </div>
+              <div class="bar-labels">
+                <span>6AM</span>
+                <span>9AM</span>
+                <span>1PM</span>
+                <span>5PM</span>
+                <span>9PM</span>
+              </div>
+            </div>
+
+            <div class="panel">
+              <h4>Top Delay Routes</h4>
+              <div class="table">
+                <div class="row-head">
+                  <div>Route</div><div>Avg Delay</div><div>Risk</div>
                 </div>
-                <div class="mock-kpi">
-                  <strong>12%</strong>
-                  <span>Cancellation Rate</span>
+                <div class="row-item">
+                  <div>LAX → ORD</div><div>52 min</div><div>High</div>
                 </div>
-                <div class="mock-kpi">
-                  <strong>38 min</strong>
-                  <span>Avg Delay</span>
+                <div class="row-item">
+                  <div>ATL → DFW</div><div>46 min</div><div>High</div>
                 </div>
-                <div class="mock-kpi">
-                  <strong>Top 5</strong>
-                  <span>Risk Routes</span>
+                <div class="row-item">
+                  <div>JFK → MIA</div><div>39 min</div><div>Med</div>
                 </div>
               </div>
-              <div class="mock-middle">
-                <div class="mock-chart"></div>
-                <div class="mock-side"></div>
-              </div>
-              <div class="mock-bottom"></div>
             </div>
           </div>
+        </div>
 
-          <div class="chips">
-            <span class="chip">KPI Reporting</span>
-            <span class="chip">Operations</span>
-            <span class="chip">Performance Trends</span>
-          </div>
+        <div class="proof">
+          <strong>What this proves:</strong> I can present operational data in a way that quickly shows when delays rise, where friction concentrates, and which routes deserve attention.
+        </div>
+      </article>
 
-          <div class="proof">
-            <strong>What this proves:</strong> I can structure operational data into a dashboard that helps decision-makers see delays, risk points, and performance concentration quickly.
-          </div>
-
-          <div class="actions">
-            <a class="btn primary" href="case-flight.html">View Related Case Study</a>
-          </div>
-        </article>
-
-        <article class="dash-card">
-          <h3>Community Impact Dashboard</h3>
-          <p>
-            A dashboard concept for nonprofit visibility, donation tracking, outreach activity, and mission-centered impact reporting.
-          </p>
-
-          <div class="dash-preview">
-            <div class="mock-dash">
-              <div class="mock-top">
-                <div class="mock-kpi">
-                  <strong>Donors</strong>
-                  <span>Growth Tracking</span>
-                </div>
-                <div class="mock-kpi">
-                  <strong>Funds Raised</strong>
-                  <span>Campaign View</span>
-                </div>
-                <div class="mock-kpi">
-                  <strong>Programs</strong>
-                  <span>Active Support</span>
-                </div>
-                <div class="mock-kpi">
-                  <strong>Reach</strong>
-                  <span>Community Impact</span>
-                </div>
-              </div>
-              <div class="mock-middle">
-                <div class="mock-chart"></div>
-                <div class="mock-side"></div>
-              </div>
-              <div class="mock-bottom"></div>
-            </div>
-          </div>
-
-          <div class="chips">
-            <span class="chip">Nonprofit</span>
-            <span class="chip">Impact Reporting</span>
-            <span class="chip">Fundraising</span>
-          </div>
-
-          <div class="proof">
-            <strong>What this proves:</strong> I can think beyond business analytics and design reporting systems that support mission-driven organizations and community work.
-          </div>
-
-          <div class="actions">
-            <a class="btn primary" href="case-rayfoundation.html">View Related Case Study</a>
-          </div>
-        </article>
-
-        <article class="dash-card">
-          <h3>Portfolio Analytics Dashboard</h3>
-          <p>
-            A concept for tracking project engagement, portfolio clicks, recruiter behavior, and content performance across sections.
-          </p>
-
-          <div class="dash-preview">
-            <div class="mock-dash">
-              <div class="mock-top">
-                <div class="mock-kpi">
-                  <strong>Views</strong>
-                  <span>Traffic</span>
-                </div>
-                <div class="mock-kpi">
-                  <strong>Clicks</strong>
-                  <span>Project Interest</span>
-                </div>
-                <div class="mock-kpi">
-                  <strong>Top Page</strong>
-                  <span>User Focus</span>
-                </div>
-                <div class="mock-kpi">
-                  <strong>Time</strong>
-                  <span>Engagement</span>
-                </div>
-              </div>
-              <div class="mock-middle">
-                <div class="mock-chart"></div>
-                <div class="mock-side"></div>
-              </div>
-              <div class="mock-bottom"></div>
-            </div>
-          </div>
-
-          <div class="chips">
-            <span class="chip">Portfolio</span>
-            <span class="chip">User Behavior</span>
-            <span class="chip">Engagement</span>
-          </div>
-
-          <div class="proof">
-            <strong>What this proves:</strong> I can apply analytics thinking to product visibility, user interaction, and digital decision-making, not just raw datasets.
-          </div>
-
-          <div class="actions">
-            <a class="btn primary" href="case-portfolio.html">View Related Case Study</a>
-          </div>
-        </article>
-
-        <article class="dash-card">
-          <h3>Executive Summary Reporting View</h3>
-          <p>
-            A dashboard designed for fast executive review, where a decision-maker needs the highest-value metrics and a simple view of what matters most.
-          </p>
-
-          <div class="dash-preview">
-            <div class="mock-dash">
-              <div class="mock-top">
-                <div class="mock-kpi">
-                  <strong>Revenue / Goal</strong>
-                  <span>Snapshot</span>
-                </div>
-                <div class="mock-kpi">
-                  <strong>Risk Areas</strong>
-                  <span>Priority Signals</span>
-                </div>
-                <div class="mock-kpi">
-                  <strong>Change</strong>
-                  <span>Trend Direction</span>
-                </div>
-                <div class="mock-kpi">
-                  <strong>Action</strong>
-                  <span>Next Steps</span>
-                </div>
-              </div>
-              <div class="mock-middle">
-                <div class="mock-chart"></div>
-                <div class="mock-side"></div>
-              </div>
-              <div class="mock-bottom"></div>
-            </div>
-          </div>
-
-          <div class="chips">
-            <span class="chip">Executive View</span>
-            <span class="chip">Summary Reporting</span>
-            <span class="chip">Decision Support</span>
-          </div>
-
-          <div class="proof">
-            <strong>What this proves:</strong> I know how to reduce complexity and present the most important information clearly for fast, high-level review.
-          </div>
-
-          <div class="actions">
-            <a class="btn" href="data-thinking.html">See My Data Thinking</a>
-          </div>
-        </article>
-      </div>
-
-      <div class="closing">
-        <h2>Why this section matters</h2>
+      <article class="dash-card">
+        <h2>Community Impact Dashboard</h2>
         <p>
-          Dashboards are where analysis becomes usable. This showcase reflects not just visual design,
-          but my ability to organize metrics, highlight priorities, and turn data into something people
-          can understand and act on.
+          This dashboard is designed for nonprofit work: donations, program reach, campaign support, and where resources are making impact.
         </p>
-      </div>
+
+        <div class="chips">
+          <span class="chip">Nonprofit</span>
+          <span class="chip">Fundraising</span>
+          <span class="chip">Impact Reporting</span>
+        </div>
+
+        <div class="dashboard">
+          <div class="kpi-row">
+            <div class="kpi"><strong>$24.8K</strong><span>Funds raised</span></div>
+            <div class="kpi"><strong>318</strong><span>Donors reached</span></div>
+            <div class="kpi"><strong>4</strong><span>Programs supported</span></div>
+            <div class="kpi"><strong>1,200+</strong><span>Estimated lives reached</span></div>
+          </div>
+
+          <div class="layout-2">
+            <div class="panel">
+              <h4>Program Allocation</h4>
+              <div class="donut-wrap">
+                <div class="donut"></div>
+                <div class="legend">
+                  <div><span class="dot a"></span>Education</div>
+                  <div><span class="dot b"></span>Healthcare</div>
+                  <div><span class="dot c"></span>Clean Water</div>
+                  <div><span class="dot d"></span>Other Support</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel">
+              <h4>Campaign Progress</h4>
+              <div class="muted-sm">Education drive</div>
+              <div class="progress"><span style="width:78%"></span></div>
+              <br>
+              <div class="muted-sm">Medical outreach</div>
+              <div class="progress"><span style="width:63%"></span></div>
+              <br>
+              <div class="muted-sm">Water support</div>
+              <div class="progress"><span style="width:51%"></span></div>
+              <br>
+              <div class="muted-sm">School kits campaign</div>
+              <div class="progress"><span style="width:86%"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="proof">
+          <strong>What this proves:</strong> I can build reporting views that fit mission-driven work, where the goal is not just numbers, but transparency, trust, and visible impact.
+        </div>
+      </article>
+
+      <article class="dash-card">
+        <h2>Portfolio Analytics Dashboard</h2>
+        <p>
+          This concept tracks how visitors interact with a portfolio: what they click, where they stay, and which projects get the most attention.
+        </p>
+
+        <div class="chips">
+          <span class="chip">User Behavior</span>
+          <span class="chip">Content Performance</span>
+          <span class="chip">Engagement</span>
+        </div>
+
+        <div class="dashboard">
+          <div class="kpi-row">
+            <div class="kpi"><strong>2.8K</strong><span>Total views</span></div>
+            <div class="kpi"><strong>31%</strong><span>Project click rate</span></div>
+            <div class="kpi"><strong>2m 12s</strong><span>Avg time on page</span></div>
+            <div class="kpi"><strong>Flight Case</strong><span>Top viewed project</span></div>
+          </div>
+
+          <div class="panel">
+            <h4>Visitor Engagement Trend</h4>
+            <div class="line-chart">
+              <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+                <polyline
+                  fill="none"
+                  stroke="rgba(124,92,255,0.95)"
+                  stroke-width="2.5"
+                  points="0,78 12,70 24,72 36,55 48,60 60,42 72,47 84,30 100,22"
+                />
+                <polyline
+                  fill="none"
+                  stroke="rgba(25,211,174,0.95)"
+                  stroke-width="2.5"
+                  points="0,84 12,80 24,76 36,69 48,62 60,58 72,52 84,48 100,44"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <div class="split-panels">
+            <div class="tiny-card">
+              <strong>Most clicked</strong>
+              <span>Flight Analysis Project</span>
+            </div>
+            <div class="tiny-card">
+              <strong>Best retention</strong>
+              <span>THIS IS US page</span>
+            </div>
+            <div class="tiny-card">
+              <strong>Low attention</strong>
+              <span>Contact section</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="proof">
+          <strong>What this proves:</strong> I can apply analytics thinking to digital behavior and product visibility, not just traditional datasets.
+        </div>
+      </article>
+
+      <article class="dash-card">
+        <h2>Executive Summary Dashboard</h2>
+        <p>
+          This view is designed for high-level review: a leader should be able to glance once and understand performance, risk, and next actions.
+        </p>
+
+        <div class="chips">
+          <span class="chip">Executive View</span>
+          <span class="chip">Summary Reporting</span>
+          <span class="chip">Decision Support</span>
+        </div>
+
+        <div class="dashboard">
+          <div class="kpi-row">
+            <div class="kpi"><strong>On Track</strong><span>Primary goal status</span></div>
+            <div class="kpi"><strong>+8.4%</strong><span>Growth this month</span></div>
+            <div class="kpi"><strong>2</strong><span>Priority risks</span></div>
+            <div class="kpi"><strong>3</strong><span>Recommended actions</span></div>
+          </div>
+
+          <div class="layout-2">
+            <div class="panel">
+              <h4>Performance Snapshot</h4>
+              <div class="bar-chart">
+                <div class="bar alt" style="height:68%"></div>
+                <div class="bar" style="height:74%"></div>
+                <div class="bar alt" style="height:80%"></div>
+                <div class="bar warn" style="height:57%"></div>
+              </div>
+              <div class="bar-labels">
+                <span>Ops</span>
+                <span>Growth</span>
+                <span>Engage</span>
+                <span>Risk</span>
+              </div>
+            </div>
+
+            <div class="panel">
+              <h4>Action Table</h4>
+              <div class="table">
+                <div class="row-head">
+                  <div>Priority</div><div>Status</div><div>Owner</div>
+                </div>
+                <div class="row-item">
+                  <div>Improve retention</div><div>Open</div><div>Product</div>
+                </div>
+                <div class="row-item">
+                  <div>Review high-risk route</div><div>In Progress</div><div>Ops</div>
+                </div>
+                <div class="row-item">
+                  <div>Expand donor outreach</div><div>Planned</div><div>Community</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="proof">
+          <strong>What this proves:</strong> I understand how to reduce complexity and present only the highest-value information for fast, high-level review.
+        </div>
+      </article>
+    </section>
+
+    <section class="closing">
+      <h2>Why this section matters</h2>
+      <p>
+        Dashboards should not all look the same. Different problems need different reporting structures.
+        This showcase is designed to reflect that — each dashboard is built around the type of story,
+        metric, and decision it is meant to support.
+      </p>
     </section>
   </main>
 </body>
